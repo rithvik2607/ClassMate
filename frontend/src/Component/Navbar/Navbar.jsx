@@ -8,10 +8,6 @@ export default function Navbar() {
       <div>
         <img src={logo} alt="LAHI Logo" className={styles.logo} />
       </div>
-      <ul className={styles.list}>
-        <li className={styles.listItem}>Login</li>
-        <li className={styles.listItem}>Sign Out</li>
-      </ul>
     </div>
   );
 }
