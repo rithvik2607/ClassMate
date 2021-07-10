@@ -4,10 +4,12 @@ import { TextField, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiBaseURL } from "../../Config";
+import { useAlert } from "react-alert";
 // import {}
 
 function Signup() {
   const history = useHistory();
+  const notification = useAlert();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,15 +20,31 @@ function Signup() {
       email,
       password,
     };
-    axios
-      .post(`${apiBaseURL}/users/signup`, data)
-      .then((res) => {
-        setEmail("");
-        setPassword("");
-      })
-      .catch((err) => {
-        console.log(err);
+    if (password.length < 6) {
+      notification.show("Password should be of 6 characters min.", {
+        type: "error",
       });
+    } else {
+      axios
+        .post(`${apiBaseURL}user/signup`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          setEmail("");
+          setPassword("");
+          notification.show("Signed Up successfully", {
+            type: "success",
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          notification.show("Something went wrong", {
+            type: "error",
+          });
+        });
+    }
   };
 
   return (
@@ -40,6 +58,7 @@ function Signup() {
             variant="outlined"
             type="email"
             className={styles.field}
+            value={email}
             fullWidth
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -49,6 +68,7 @@ function Signup() {
             variant="outlined"
             type="password"
             className={styles.field}
+            value={password}
             fullWidth
             onChange={(e) => setPassword(e.target.value)}
           />
