@@ -1,6 +1,10 @@
+const { ObjectId } = require("bson")
 const mongoose = require("mongoose")
-const attendance = new mongoose.Schema({
-    id:{
+const Attendance = new mongoose.Schema({
+    _id: {
+        type: ObjectId
+    },
+    meetId:{
         type:String,
         required: true
     },
@@ -17,4 +21,4 @@ const attendance = new mongoose.Schema({
    
 })
  
-module.exports = mongoose.model("attendance",attendance)
+module.exports = mongoose.model("attendance", Attendance)
