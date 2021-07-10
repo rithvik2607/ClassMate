@@ -1,18 +1,16 @@
 import LoginPage from "./Component/LoginPage/Login";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Signup from './Component/Signup/Signup.js'
-import Navbar from './Component/Navbar/Navbar'
+import Signup from "./Component/Signup/Signup";
+import Navbar from "./Component/Navbar/Navbar";
 
 function App() {
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Switch>
-        <Route path="/" component={LoginPage}/>
-      </Switch>
-      <Switch>
-        <Route path="/" component={Signup}/>
+        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </Router>
   );

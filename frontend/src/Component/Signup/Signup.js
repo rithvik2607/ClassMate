@@ -1,27 +1,29 @@
-import React from 'react'
-import './Components/Signup/Signup.css';
+import React from "react";
+import styles from "./Signup.module.css";
+import { TextField } from "@material-ui/core";
 
 function Signup() {
-
-    
-    return (
-        <div>
-        <form className="registration" method="post">
-        <h1>👋 Welcome!</h1>
-           <input className="pure-material-textfield-outlined" placeholder=" " type="email" required />
-           <input className="pure-material-textfield-outlined" placeholder=" " type="password" required />
-           <button className="pure-material-button-contained" type="submit">Sign Up</button>
-
-        </ form>
-            <div class="left-footer">
-                Created by Ben Szabo (finnhvman)
-                <br/>
-            </div>
-
-      </div>
-        
-    )
+  return (
+    <div className={styles.container}>
+      <form className={styles.registration} method="post">
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          type="email"
+        />
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          type="password"
+        />
+        <button className={styles.pure_material_button_contained} type="submit">
+          Sign Up
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default Signup
-
+export default Signup;
