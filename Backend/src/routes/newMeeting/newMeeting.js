@@ -4,9 +4,12 @@ const config = require("./config");
 const rp = require("request-promise");
 const dotenv = require("dotenv");
 const express = require("express");
+const mongoose = require("mongoose");
 const auth = require("../../middlewares/auth");
 const router = express.Router();
 
+const Messages = require("../../models/messages");
+const messages = require("../../models/messages");
 const client = require("twilio")(config.accountSid, config.authToken);
 
 //Use the ApiKey and APISecret from config.js
@@ -25,6 +28,17 @@ router.post("/newmeeting", (req, res) => {
   console.log(studentData)
   console.log(pollData)
 
+  let message = new Messages({
+    time
+  });
+
+  message._id = mongoose.Types.ObjectId();
+
+  for(let i = 0; i < studentData.length - 1; i++) {
+    message.contacts.push(studentData[i]["Phone Number"]);
+  }
+
+  await message.save();
 
   email = "shivansh.spandey@gmail.com";
   var options = {

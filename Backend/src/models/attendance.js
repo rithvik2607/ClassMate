@@ -5,20 +5,20 @@ const Attendance = new mongoose.Schema({
         type: ObjectId
     },
     meetId:{
-        type:String,
+        type : String,
         required: true
     },
     email:{
-        type:String,
+        type : String,
+        required: true
+    },
+    time: {
+        type: Date,
         required: true
     },
     students : [{
-
         type: String
-    
     }]
-    
-   
 })
  
-module.exports = mongoose.model("attendance", Attendance)
+module.exports = mongoose.model("attendance", Attendance, 'attendance')

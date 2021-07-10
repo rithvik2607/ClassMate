@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const Attendance = require('../models/attendance');
+const Meeting = require("../models/meeting");
 const router = express.Router();
 
 router.post("/join", async (req, res) => {
