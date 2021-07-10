@@ -55,27 +55,16 @@ class TeacherForm extends Component {
       console.log("Data>>>" + data); // shows that excel data is read
       console.log(this.convertToJson(data));
       this.setState({ studentData: this.convertToJson(data) });
-      const apiData = {
+      const formData = {
         time: this.state.time,
         date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
       }; // shows data in json format
-      axios
-        .post(`${apiBaseURL}meet/newmeeting`, apiData)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => console.log(err));
-    };
-    reader.readAsBinaryString(f);
-  }
-
   convertToJson(csv) {
     var lines = csv.split("\n");
 
     var result = [];
-
     var headers = lines[0].split(",");
 
     for (var i = 1; i < lines.length; i++) {
@@ -90,7 +79,7 @@ class TeacherForm extends Component {
     }
 
     //return result; //JavaScript object
-    return JSON.stringify(result); //JSON
+    return result; //JSON
   }
 
   pollDataFunction(value) {
