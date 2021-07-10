@@ -43,12 +43,16 @@ export default function Login() {
             variant="outlined"
             className={styles.field}
             fullWidth
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             label="Password"
             variant="outlined"
             className={styles.field}
             fullWidth
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <Button variant="contained" color="primary" onClick={submit}>
