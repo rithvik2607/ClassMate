@@ -20,11 +20,9 @@ export default function Login() {
         password: password,
       };
       axios
-        .post(`${apiBaseURL}/user/login`, data)
-        .then((res) => {
-          setEmail("");
-          setPassword("");
-          history.push("/dashboard");
+      .post(`${apiBaseURL}/user/login`, data)
+      .then((res) => {
+          history.replace("/dashboard");
           notification.show("Logged In successfully", { type: "success" });
         })
         .catch((err) => {
