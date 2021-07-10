@@ -14,13 +14,6 @@
     background-color: white;
 }
 
-h1 {
-    margin: 32px 0;
-    font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
-    font-weight: normal;
-    text-align: center;
-}
-
 .registration > label {
     display: block;
     margin: 24px 0;
@@ -34,11 +27,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-button {
-    display: block !important;
-    margin: 32px auto;
 }
 
 .done,
@@ -75,6 +63,10 @@ button {
 
 .signed > .progress {
     animation: loading 4s;
+}
+
+.heading{
+
 }
 
 @keyframes loading {
