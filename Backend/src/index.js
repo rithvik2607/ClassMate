@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const signup = require("./routes/signup");
+const user = require("./routes/user");
 require('dotenv').config();
 
 const uri = process.env.MONGODB_TOKEN;
@@ -15,6 +15,10 @@ mongoose.connect(uri, {
 .catch(err => console.log(err));
 
 const app = express();
-const port = process.env.PORT || 5000;
-app.use("/signup", signup);
+const port = process.env.PORT || 3000;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use("/user", user);
+
 app.listen(port, () => console.log("The application is listening on port " + port));
