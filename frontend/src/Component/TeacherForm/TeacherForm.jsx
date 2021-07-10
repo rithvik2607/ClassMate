@@ -4,7 +4,7 @@ import styles from "./TeacherForm.module.css";
 import ExpandableComponent from "./Expandable/Expandable";
 import * as XLSX from "xlsx";
 import axios from "axios";
-import {apiBaseURL} from '../../Config'
+import { apiBaseURL } from "../../Config";
 
 class TeacherForm extends Component {
   constructor(props) {
@@ -60,7 +60,18 @@ class TeacherForm extends Component {
         date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
-      }; // shows data in json format
+      };
+      console.log(formData);
+      axios
+        .post(`${apiBaseURL}meet/newmeeting`, formData)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    };
+    reader.readAsBinaryString(f);
+  }
+  
   convertToJson(csv) {
     var lines = csv.split("\n");
 
