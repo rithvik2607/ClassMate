@@ -18,7 +18,12 @@ const payload = {
 const token = jwt.sign(payload, config.APISecret);
 
 router.post("/newmeeting", (req, res) => {
-  const { ExcelData, time, date, polls } = req.body;
+  const { time, date, studentData, pollData } = req.body;
+
+  console.log(time)
+  console.log(date)
+  console.log(studentData)
+  console.log(pollData)
 
 
   email = "shivansh.spandey@gmail.com";
@@ -28,7 +33,7 @@ router.post("/newmeeting", (req, res) => {
     body: {
       topic: "test create meeting",
       type: 2,
-      start_time: date + "T" + time,
+      start_time: JSON.stringify(date) + "T" + JSON.stringify(time) + "Z",
       duration: 30,
       settings: {
         host_video: "true",
@@ -47,21 +52,23 @@ router.post("/newmeeting", (req, res) => {
 
   rp(options)
     .then(function (response) {
-      // console.log("response is: ", response);
+      console.log("response is: ", response);
       res.send("create meeting result: " + JSON.stringify(response));
-      ExcelData.forEach(item=> {
+      for(let index=0; index<studentData.length - 1;index++){
         client.messages
           .create({
             body: "Your meet is been scheduled on time: "+ time +" and on date " + date + " and URL: " + "https://localhost:5000/meet/" + response["id"],
             from: "+13372430938",
-            to: item.number,
+            to: "+91" + JSON.stringify(studentData[index]["Phone Number"]),
           }).then((message) => console.log(message.sid));
-      })
+        }
     })
     .catch(function (err) {
       // API call failed...
       console.log("API call failed, reason ", err);
     });
 });
+
+
 
 module.exports = router;
