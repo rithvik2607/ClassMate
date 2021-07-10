@@ -22,7 +22,7 @@ const token = jwt.sign(payload, config.APISecret);
 app.get('/', (req, res) => res.send(req.body));
 
 app.post("/newmeeting", (req, res) => {
-    email = "your maketplace developer email";
+    email = "shivansh.spandey@gmail.com";
     var options = {
         method: "POST",
         uri: "https://api.zoom.us/v2/users/" + email + "/meetings",
