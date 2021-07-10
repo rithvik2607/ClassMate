@@ -1,12 +1,12 @@
-import LoginPage from "./components/login.js";
+import LoginPage from "./Component/LoginPage/Login";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from './Component'
+// import Navbar from './Component/'
 
 function App() {
   return (
     <Router>
-      <Navbar/>
+      {/* <Navbar/> */}
       <Switch>
         {/* <Route
           exact
