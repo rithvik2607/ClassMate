@@ -8,6 +8,9 @@ export default function Navbar() {
       <div>
         <img src={logo} alt="LAHI Logo" className={styles.logo} />
       </div>
+      <div className={styles.list}>
+        <div id="google_translate_element"></div>
+      </div>
     </div>
   );
 }
