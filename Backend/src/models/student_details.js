@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const Teacher = new mongoose.Schema({
+const StudentDetail = new mongoose.Schema({
     Name:{
         type : String,
         required :true
@@ -16,4 +16,4 @@ const Teacher = new mongoose.Schema({
    
 })
  
-module.exports = mongoose.models("Teachers",Teacher)
+module.exports = mongoose.models("StudentDetail",StudentDetail)
