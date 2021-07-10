@@ -1,0 +1,55 @@
+.Question {
+  /* width: 80%; */
+  margin: 2vh auto;
+  box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  background-color: var(--primary-bg);
+  padding: 1.5vh 2vw;
+}
+
+.Question .info {
+  color: var(--primary-black);
+  padding: 0;
+  margin: 0;
+}
+
+.Question header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  background: transparent;
+  border-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-dark-purple);
+  cursor: pointer;
+  align-self: center;
+}
+
+.btn svg {
+  stroke-width: 6px;
+}
+
+.QuestionTitle {
+  cursor: pointer;
+  font-family: var(--fonts-heading);
+  font-style: normal;
+  font-weight: 900;
+  color: var(--primary-black);
+}
+
+
+.expandable{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.exp{
+  margin: 5px !important;
+  color: black;
+}

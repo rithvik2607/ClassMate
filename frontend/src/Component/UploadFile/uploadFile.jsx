@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import * as XLSX from "xlsx";
 
 class ExcelToJson extends React.Component {
