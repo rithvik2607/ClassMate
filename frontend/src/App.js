@@ -1,11 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginPage from "./components/login.js"
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      APP
-    </div>
+    <>
+    <Route exact path="/" render ={() => {
+      return
+    }}>
+      <LoginPage />
+    </Route>
+    </>
   );
 }
 
