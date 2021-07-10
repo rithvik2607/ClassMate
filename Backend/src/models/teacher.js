@@ -5,14 +5,6 @@ const Teacher = new mongoose.Schema({
         type: ObjectId,
         required: true
     },
-    name:{
-        type : String,
-        required :true
-    },
-    phone_number:{
-        type : String,
-        required :true
-    },
     email:{
         type : String,
         required :true

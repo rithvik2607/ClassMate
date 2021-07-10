@@ -4,11 +4,8 @@ const config = require('./config');
 const rp = require('request-promise');
 
 const express = require('express');
-const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-var email, userid, resp;
-const port = 3000;
+const auth = require('../../middlewares/auth');
+const router = express.Router();
 
 //Use the ApiKey and APISecret from config.js
 const payload = {
@@ -17,11 +14,10 @@ const payload = {
 };
 const token = jwt.sign(payload, config.APISecret);
 
-
 //get the form 
-app.get('/', (req, res) => res.send(req.body));
+router.get('/', (req, res) => res.send(req.body));
 
-app.post("/newmeeting", (req, res) => {
+router.post("/newmeeting", auth, (req, res) => {
     email = "shivansh.spandey@gmail.com";
     var options = {
         method: "POST",
@@ -57,7 +53,7 @@ app.post("/newmeeting", (req, res) => {
 
 
 //use userinfo from the form and make a post request to /userinfo
-app.post('/userinfo', (req, res) => {
+router.post('/userinfo', auth, (req, res) => {
     //store the email address of the user in the email variable
     email = req.body.email;
     //check if the email was stored in the console
@@ -103,5 +99,4 @@ app.post('/userinfo', (req, res) => {
 
 });
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+module.exports = router;
