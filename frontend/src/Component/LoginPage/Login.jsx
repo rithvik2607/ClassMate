@@ -2,29 +2,34 @@ import React, { useState } from "react";
 import axios from "axios";
 import { apiBaseURL } from "../../Config";
 import { useHistory } from "react-router";
+import { useAlert } from "react-alert";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const notification = useAlert();
 
   const submit = (e) => {
     e.preventDefault();
-    if (!email || !password) alert("Email or Password is blank");
+    if (!email || !password)
+      notification.show("Email or Password is blank", { type: "error" });
     else {
       var data = {
         email: email,
         password: password,
       };
       axios
-        .post(`${apiBaseURL}/login`, data)
+        .post(`${apiBaseURL}/user/login`, data)
         .then((res) => {
           setEmail("");
           setPassword("");
           history.push("/dashboard");
+          notification.show("Logged In successfully", { type: "success" });
         })
         .catch((err) => {
           console.log(err);
+          notification.show("Some error occured", { type: "error" });
         });
     }
   };
