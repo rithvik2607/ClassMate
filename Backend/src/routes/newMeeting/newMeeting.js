@@ -20,7 +20,7 @@ const payload = {
 
 const token = jwt.sign(payload, config.APISecret);
 
-router.post("/newmeeting", (req, res) => {
+router.post("/newmeeting", async (req, res) => {
   const { time, date, studentData, pollData } = req.body;
 
   console.log(time)
