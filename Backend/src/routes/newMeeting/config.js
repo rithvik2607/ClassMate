@@ -4,11 +4,15 @@ const env = process.env.NODE_ENV || 'production'
 const config = {
 	development :{
 		APIKey : 'cdbviLF0SiOjjOYDTqGjrw',
-		APISecret : ''
+		APISecret : '',
+		accountSid : 'AC5178f9bda8dde22feafc2c5d058f319f',
+		authToken : 'dece1dae6fe09cb80ee25b11fa398958'
 	},
 	production:{	
 		APIKey : 'cdbviLF0SiOjjOYDTqGjrw',
-		APISecret : ''
+		APISecret : '',
+		accountSid : 'AC5178f9bda8dde22feafc2c5d058f319f',
+		authToken : 'dece1dae6fe09cb80ee25b11fa398958'
 	}
 };
 

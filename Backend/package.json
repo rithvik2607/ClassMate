@@ -18,6 +18,8 @@
     "mongoose": "^5.13.2",
     "nodemon": "^2.0.11",
     "passport": "^0.4.1",
-    "request-promise": "^4.2.6"
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "twilio": "^3.65.0"
   }
 }
