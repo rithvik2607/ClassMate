@@ -15,13 +15,9 @@ const auth = require("../middlewares/auth");
 router.post(
     "/signup",
     [
-        check("name", "Please Enter a Valid Username").not().isEmpty(),
         check("email", "Please enter a valid email").isEmail(),
         check("password", "Please enter a valid password").isLength({
             min: 6
-        }),
-        check("phone_number", "Please enter a valid phone_number").isLength({
-            min: 10
         })
     ],
     async (req, res) => {
@@ -33,10 +29,8 @@ router.post(
         }
 
         const {
-            name,
             email,
-            password,
-            phone_number
+            password
         } = req.body;
         try {
             let user = await User.findOne({
@@ -49,10 +43,8 @@ router.post(
             }
 
             user = new User({
-                name,
                 email,
-                password,
-                phone_number
+                password
             });
 
             const salt = await bcrypt.genSalt(10);
@@ -81,7 +73,7 @@ router.post(
                 }
             );
         } catch (err) {
-            console.log(err.message);
+            console.error(err.message);
             res.status(500).send("Error in Saving");
         }
     }
