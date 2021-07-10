@@ -1,17 +1,54 @@
-.bg-img {
-    /* The image used */
-    background-image: url("https://static.toiimg.com/thumb/msid-84224076,imgsize-140514,width-400,resizemode-4/84224076.jpg");
-      
-        min-height: 380px;
-    
-  }
-  
-  /* Add styles to the form container */
+.bg_img {
+  /* The image used */
+  background-image: url("../../Assets/bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  border-radius: 8px;
+  padding: 30px 48px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  width: 45%;
+  background-color: white;
+  opacity: 90%;
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.innerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Label {
+  padding: 20px;
+  display: flex;
+}
+
+.expandableContainer {
+  width: 90%;
+}
+
+.dateTime{
+  display: flex;
+}
+
+@media only screen and (max-width: 1023px) {
   .container {
-    position: absolute;
-    right: 0;
-    margin: 20px;
-    max-width: 300px;
-    padding: 16px;
-    background-color: white;
+    padding: 30px 0;
+    width: 95%;
+    box-shadow: none;
   }
+}
+
+.Teacher{
+  margin: 5px !important
+}
