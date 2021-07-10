@@ -4,23 +4,15 @@ const Teacher = new mongoose.Schema({
         type : String,
         required :true
     },
-    TeacherId:{
+    StudentId:{
         type : String,
         required :true
     },
     Phone_number:{
         type : String,
         required :true
-    },
-
-    Email:{
-        type : String,
-        required :true
-    },
-    Password:{
-        type : String,
-        required :true
     }
+
    
 })
  
