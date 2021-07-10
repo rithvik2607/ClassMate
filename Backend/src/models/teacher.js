@@ -4,10 +4,6 @@ const Teacher = new mongoose.Schema({
         type : String,
         required :true
     },
-    TeacherId:{
-        type : String,
-        required :true
-    },
     Phone_number:{
         type : String,
         required :true
