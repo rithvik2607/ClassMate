@@ -2,7 +2,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("./config");
 const rp = require("request-promise");
-
+const dotenv = require("dotenv");
 const express = require("express");
 const auth = require("../../middlewares/auth");
 const router = express.Router();
@@ -17,14 +17,19 @@ const payload = {
 
 const token = jwt.sign(payload, config.APISecret);
 
-router.post("/newmeeting",  (req, res) => {
+router.post("/newmeeting", (req, res) => {
+  const { ExcelData, time, date, polls } = req.body;
+
+
   email = "shivansh.spandey@gmail.com";
   var options = {
     method: "POST",
     uri: "https://api.zoom.us/v2/users/" + email + "/meetings",
     body: {
       topic: "test create meeting",
-      type: 1,
+      type: 2,
+      start_time: date + "T" + time,
+      duration: 30,
       settings: {
         host_video: "true",
         participant_video: "true",
@@ -42,16 +47,16 @@ router.post("/newmeeting",  (req, res) => {
 
   rp(options)
     .then(function (response) {
-      console.log("response is: ", response);
+      // console.log("response is: ", response);
       res.send("create meeting result: " + JSON.stringify(response));
-
-      client.messages
-        .create({
-          body: "Your meet is been scheduled on time: and URL: " + "https://localhost:5000/meet/" + response["id"],
-          from: "+13372430938",
-          to: "+919712103373",
-        })
-        .then((message) => console.log(message.sid));
+      ExcelData.forEach(item=> {
+        client.messages
+          .create({
+            body: "Your meet is been scheduled on time: "+ time +" and on date " + date + " and URL: " + "https://localhost:5000/meet/" + response["id"],
+            from: "+13372430938",
+            to: item.number,
+          }).then((message) => console.log(message.sid));
+      })
     })
     .catch(function (err) {
       // API call failed...
