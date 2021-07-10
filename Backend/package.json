@@ -10,13 +10,20 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+<<<<<<< HEAD
     "body-parser": "^1.19.0",
+=======
+>>>>>>> cd042fbd4dabbd865bf9f51122bb4833857113ae
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.12.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2",
+<<<<<<< HEAD
     "nodemon": "^2.0.11",
     "passport": "^0.4.1"
+=======
+    "request-promise": "^4.2.6"
+>>>>>>> cd042fbd4dabbd865bf9f51122bb4833857113ae
   }
 }

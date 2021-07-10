@@ -1,5 +1,13 @@
 :root {
-  --nav-height : 105px
+  --nav-height : 105px;
+  --primary-red: #c74d5d;
+  --primary-orange: #e7955a;
+  --primary-green: #259845;
+  --primary-light-blue: #098fdc;
+  --primary-red-translucent: hsl(352, 52%, 54%, 0.3);
+  --primary-orange-translucent: hsl(25, 75%, 63%, 0.3);
+  --primary-green-translucent: hsl(137, 61%, 37%, 0.3);
+  --primary-light-blue-translucent: hsl(202, 92%, 45%, 0.3);
 }
 
 
