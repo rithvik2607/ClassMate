@@ -1,0 +1,17 @@
+.bg-img {
+    /* The image used */
+    background-image: url("https://static.toiimg.com/thumb/msid-84224076,imgsize-140514,width-400,resizemode-4/84224076.jpg");
+      
+        min-height: 380px;
+    
+  }
+  
+  /* Add styles to the form container */
+  .container {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
+  }
