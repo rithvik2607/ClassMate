@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require('cors');
 const user = require("./routes/user");
 const meeting = require("./routes/newMeeting/newMeeting");
+const attend = require("./routes/attendance");
 require('dotenv').config();
 
 const corsOpts = {
@@ -30,5 +31,6 @@ app.use(express.json());
 app.use(cors(corsOpts));
 app.use("/user", user);
 app.use("/meet", meeting);
+app.use("/attend", attend);
 
 app.listen(port, () => console.log("The application is listening on port " + port));
