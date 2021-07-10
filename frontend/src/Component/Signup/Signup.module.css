@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh -  var(--nav-height));
+}
+
+.registration {
+    position: relative;
+    border-radius: 8px;
+    padding: 16px 48px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-color: white;
+}
+
+.registration > label {
+    display: block;
+    margin: 24px 0;
+    width: 320px;
+}
+
+a {
+    color: rgb(var(--pure-material-primary-rgb));
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.done,
+.progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    visibility: hidden;
+}
+
+.done {
+    transition: visibility 0s 1s;
+}
+
+.signed > .done {
+    visibility: visible;
+}
+
+.done > a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.progress {
+    opacity: 0;
+}
+
+.signed > .progress {
+    animation: loading 4s;
+}
+
+.heading{
+
+}
+
+@keyframes loading {
+    0% {
+        visibility: visible;
+    }
+    12.5% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    87.5% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
