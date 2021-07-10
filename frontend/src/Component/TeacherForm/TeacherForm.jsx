@@ -3,6 +3,8 @@ import { TextField, Button, Accordion } from "@material-ui/core";
 import styles from "./TeacherForm.module.css";
 import ExpandableComponent from "./Expandable/Expandable";
 import * as XLSX from "xlsx";
+import axios from "axios";
+import {apiBaseURL} from '../../Config'
 
 class TeacherForm extends Component {
   constructor(props) {
@@ -53,12 +55,16 @@ class TeacherForm extends Component {
       console.log("Data>>>" + data); // shows that excel data is read
       console.log(this.convertToJson(data));
       this.setState({ studentData: this.convertToJson(data) });
-      console.log({
+      const formData = {
         time: this.state.time,
-        data: this.state.date,
+        date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
-      }); // shows data in json format
+      }; // shows data in json format
+      console.log(formData);
+      axios.post(`${apiBaseURL}meet/newmeeting`, formData).then((res)=>{
+        console.log(res);
+      }).catch((err)=> console.log(err));
     };
     reader.readAsBinaryString(f);
   }
@@ -82,7 +88,7 @@ class TeacherForm extends Component {
     }
 
     //return result; //JavaScript object
-    return JSON.stringify(result); //JSON
+    return result; //JSON
   }
 
   pollDataFunction(value) {
