@@ -14,7 +14,8 @@ class TeacherForm extends Component {
       list: [],
       time: "",
       date: "",
-      pollData: []
+      pollData: [],
+      studentData: "",
     };
     this.pollDataFunction = this.pollDataFunction.bind(this);
   }
@@ -34,7 +35,7 @@ class TeacherForm extends Component {
   }
 
   readFile(e) {
-    e.preventDefault()
+    e.preventDefault();
     var f = this.state.file;
     var name = f.name;
     const reader = new FileReader();
@@ -50,7 +51,14 @@ class TeacherForm extends Component {
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
       /* Update state */
       console.log("Data>>>" + data); // shows that excel data is read
-      console.log(this.convertToJson(data)); // shows data in json format
+      console.log(this.convertToJson(data));
+      this.setState({ studentData: this.convertToJson(data) });
+      console.log({
+        time: this.state.time,
+        data: this.state.date,
+        studentData: this.state.studentData,
+        pollData: this.state.pollData,
+      }); // shows data in json format
     };
     reader.readAsBinaryString(f);
   }
@@ -77,9 +85,9 @@ class TeacherForm extends Component {
     return JSON.stringify(result); //JSON
   }
 
-  pollDataFunction(value){
-    console.log(value)
-    this.setState({pollData: [...this.state.pollData, value]})
+  pollDataFunction(value) {
+    console.log(value);
+    this.setState({ pollData: [...this.state.pollData, value] });
   }
 
   render() {
@@ -109,7 +117,7 @@ class TeacherForm extends Component {
                 id="outlined-basic"
                 variant="outlined"
                 type="date"
-                onChange={(e) => this.setState({date : e.target.value})}
+                onChange={(e) => this.setState({ date: e.target.value })}
                 className={styles.Teacher}
               />
             </div>
@@ -118,12 +126,19 @@ class TeacherForm extends Component {
               label="Number of Polls"
               variant="outlined"
               type="number"
-              onChange={(e) => this.setState({list : [...this.state.list,e.target.value]})}
+              onChange={(e) =>
+                this.setState({ list: [...this.state.list, e.target.value] })
+              }
               className={styles.Teacher}
             />
             <div className={styles.expandableContainer}>
               {this.state.list.map((itm) => {
-                return <ExpandableComponent title={`Question ${itm}`} handleData={this.pollDataFunction}/>;
+                return (
+                  <ExpandableComponent
+                    title={`Question ${itm}`}
+                    handleData={this.pollDataFunction}
+                  />
+                );
               })}
             </div>
             <Button
