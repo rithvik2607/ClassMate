@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "react-icons": "^4.2.0"
+  }
+}
