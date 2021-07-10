@@ -3,7 +3,6 @@ import time
 import urllib
 import fpdf as FPDF
 
-import os
 import base64
 
 from sendgrid import SendGridAPIClient
@@ -32,8 +31,6 @@ while 1:
         dt_object = datetime.fromtimestamp(timestamp)
         if i["time"] < dt_object:
 
-            # pdf = FPDF(orientation = 'P', format='A4')
-            # pdf.set_font('Arial', '', 14)
             data = ""
             for y in i["students"]:
                 data = data + "\n" + y
@@ -65,7 +62,7 @@ while 1:
                 print(e.to_dict)
             print(response.status_code, response.body, response.headers)
 
-            # myquery = { "time": i["time"] }
-            # mycol.delete_one(myquery)
+            myquery = { "time": i["time"] }
+            mycol.delete_one(myquery)
 
     time.sleep(3600)
