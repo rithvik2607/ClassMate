@@ -1,23 +1,26 @@
+const { ObjectId } = require("bson")
 const mongoose = require("mongoose")
 const Teacher = new mongoose.Schema({
-    Name:{
+    _id: {
+        type: ObjectId,
+        required: true
+    },
+    name:{
         type : String,
         required :true
     },
-    Phone_number:{
+    phone_number:{
         type : String,
         required :true
     },
-
-    Email:{
+    email:{
         type : String,
         required :true
     },
-    Password:{
+    password:{
         type : String,
         required :true
     }
-   
 })
  
 module.exports = mongoose.model("Teachers",Teacher)

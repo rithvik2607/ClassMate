@@ -1,4 +1,6 @@
 .container {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,21 +20,8 @@
   align-items: center;
 }
 
-.login {
-  padding: 0;
-}
-
-.fieldsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
 .field {
-  margin: 7px 0 !important;
+  margin: 20px !important;
 }
 
 @media only screen and (max-width: 1023px) {
