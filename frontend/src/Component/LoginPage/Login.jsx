@@ -3,6 +3,8 @@ import axios from "axios";
 import { apiBaseURL } from "../../Config";
 import { useHistory } from "react-router";
 import { useAlert } from "react-alert";
+import styles from "./Login.module.css";
+import { Button, TextField } from "@material-ui/core";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,7 +13,6 @@ export default function Login() {
   const notification = useAlert();
 
   const submit = (e) => {
-    e.preventDefault();
     if (!email || !password)
       notification.show("Email or Password is blank", { type: "error" });
     else {
@@ -20,8 +21,8 @@ export default function Login() {
         password: password,
       };
       axios
-      .post(`${apiBaseURL}/user/login`, data)
-      .then((res) => {
+        .post(`${apiBaseURL}/user/login`, data)
+        .then((res) => {
           history.replace("/dashboard");
           notification.show("Logged In successfully", { type: "success" });
         })
@@ -31,45 +32,29 @@ export default function Login() {
         });
     }
   };
-  return (
-    <>
-      <div className="container w-50">
-        <h3 className="text-center py-5">Login Page</h3>
-        <form onSubmit={submit}>
-          <div className="mb-3">
-            <label for="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              className="form-control"
-              id="email"
-            />
-          </div>
-          <div className="mb-3">
-            <label for="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              className="form-control"
-              id="password"
-            />
-          </div>
 
-          <button type="submit" className="btn">
-            Sign In
-          </button>
-        </form>
+  return (
+    <div className={styles.container}>
+      <div className={styles.innerContainer}>
+        <h1 className={styles.login}>Login Page</h1>
+        <div className={styles.fieldsContainer}>
+          <TextField
+            label="Email"
+            variant="outlined"
+            className={styles.field}
+            fullWidth
+          />
+          <TextField
+            label="Password"
+            variant="outlined"
+            className={styles.field}
+            fullWidth
+          />
+        </div>
+        <Button variant="contained" color="primary" onClick={submit}>
+          Login
+        </Button>
       </div>
-    </>
+    </div>
   );
 }
