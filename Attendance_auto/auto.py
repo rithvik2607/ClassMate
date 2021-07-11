@@ -27,7 +27,7 @@ while 1:
     mycol = mydb["attendance"]
 
     for i in mycol.find():
-        timestamp = time.time()
+        timestamp = time.time() + datetime.timedelta(hours = -1)
         dt_object = datetime.fromtimestamp(timestamp)
         if i["time"] < dt_object:
 
