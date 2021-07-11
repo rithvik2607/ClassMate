@@ -62,4 +62,4 @@ while 1:
             myquery = { "time": i["time"] }
             mycol.delete_one(myquery)
 
-    time.sleep(5)
+    time.sleep(3600)
