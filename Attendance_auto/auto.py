@@ -27,16 +27,15 @@ while 1:
     mycol = mydb["attendance"]
 
     for i in mycol.find():
-        a = datetime.now() + timedelta(hours = -1 )
-        a = int(a.strftime('%Y%m%d'))
-        dt_object = datetime.fromtimestamp(a)
-        if i["time"] < dt_object:
+        a = datetime.now() + timedelta(hours = -4.5 )
+        print(i["time"], a)
+        if i["time"] < a:
 
             data = ""
             for y in i["students"]:
                 data = data + "\n" + y
 
-            print(data)
+            #print(data)
             
             message = Mail(
                 from_email='muditsinghal2002@gmail.com',
@@ -47,7 +46,7 @@ while 1:
 
             data_bytes = data.encode('ascii')
             encoded_file = base64.b64encode(data_bytes).decode('ascii')
-            print(encoded_file)
+            #print(encoded_file)
             attachedFile = Attachment(
                 FileContent(encoded_file),
                 FileName('attachment.txt'),

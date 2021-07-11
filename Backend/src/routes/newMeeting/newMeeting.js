@@ -62,7 +62,7 @@ router.post("/newmeeting", async (req, res) => {
   };
 
   rp(options)
-    .then(function (response) {
+    .then(async function (response) {
       res.send("create meeting result: " + JSON.stringify(response));
       for(let index=0; index<studentData.length - 1;index++){
         client.messages
@@ -74,7 +74,7 @@ router.post("/newmeeting", async (req, res) => {
         }
 
         let meeting = new Meeting({
-          Date:startTime
+          date:startTime
         });
         meeting._id = mongoose.Types.ObjectId();
         meeting.meetId = response.id;
