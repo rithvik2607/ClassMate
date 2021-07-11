@@ -61,7 +61,7 @@ class TeacherForm extends Component {
         date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
-        email: this.state.email,
+        teachersEmail: this.state.email,
       };
       console.log(formData);
       axios
