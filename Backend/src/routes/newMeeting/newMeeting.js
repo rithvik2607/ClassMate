@@ -21,7 +21,7 @@ const payload = {
 const token = jwt.sign(payload, config.APISecret);
 
 router.post("/newmeeting", async (req, res) => {
-  const { time, date, studentData, pollData } = req.body;
+  const { time, date, studentData, pollData, teachersEmail } = req.body;
 
   var startTime = date+'T'+time+':00'
   let message = new Messages({
@@ -66,7 +66,7 @@ router.post("/newmeeting", async (req, res) => {
       for(let index=0; index<studentData.length - 1;index++){
         client.messages
           .create({
-            body: "Your meet is been scheduled on time: "+ time +" and on date " + date + " and URL: " + "https://localhost:5000/meet/" + response["id"],
+            body: "Your meet is been scheduled on time: "+ time +" and on date " + date + " and URL: " + "https://localhost:3000/meet/" + response["id"],
             from: "+13372430938",
             to: "+91" + JSON.stringify(studentData[index]["Phone Number"]),
           }).then((message) => console.log(message.sid));
@@ -78,7 +78,7 @@ router.post("/newmeeting", async (req, res) => {
         meeting._id = mongoose.Types.ObjectId();
         meeting.meetId = response.id;
         meeting.pass = response.password;
-        meeting.email = response.host_email;
+        meeting.email = teachersEmail;
         meeting.pollData = [
           answer = pollData.answer,
           opt1 = pollData.opt1,
