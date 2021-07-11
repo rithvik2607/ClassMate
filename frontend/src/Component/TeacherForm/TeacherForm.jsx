@@ -164,8 +164,8 @@ class TeacherForm extends Component {
               variant="contained"
               color="primary"
               className={styles.Teacher}
-              onClick={() => {
-                this.readFile();
+              onClick={(e) => {
+                this.readFile(e);
               }}
             >
               SUBMIT
