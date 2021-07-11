@@ -17,6 +17,8 @@ router.post("/join", async (req, res) => {
             });
         }
 
+        let time = meeting.date;
+
         const email = meeting.email;
 
         let attend = await Attendance.findOne({
@@ -30,6 +32,7 @@ router.post("/join", async (req, res) => {
             const attendance = new Attendance({
                 meetId,
                 email,
+                time
             });
     
             attendance._id = mongoose.Types.ObjectId();

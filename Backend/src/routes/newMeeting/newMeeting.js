@@ -23,13 +23,10 @@ const token = jwt.sign(payload, config.APISecret);
 router.post("/newmeeting", async (req, res) => {
   const { time, date, studentData, pollData } = req.body;
 
-  console.log(time)
-  console.log(date)
-  console.log(studentData)
-  console.log(pollData)
-
+  var startTime = date+'T'+time+':00'
+  console.log(startTime)
   let message = new Messages({
-    time
+    time:startTime
   });
 
   message._id = mongoose.Types.ObjectId();
@@ -66,7 +63,6 @@ router.post("/newmeeting", async (req, res) => {
 
   rp(options)
     .then(function (response) {
-      console.log("response is: ", response);
       res.send("create meeting result: " + JSON.stringify(response));
       for(let index=0; index<studentData.length - 1;index++){
         client.messages
