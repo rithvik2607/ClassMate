@@ -9,7 +9,7 @@ const auth = require("../../middlewares/auth");
 const router = express.Router();
 
 const Messages = require("../../models/messages");
-const messages = require("../../models/messages");
+const Meeting = require("../../models/meeting");
 const client = require("twilio")(config.accountSid, config.authToken);
 
 //Use the ApiKey and APISecret from config.js
@@ -72,6 +72,22 @@ router.post("/newmeeting", async (req, res) => {
             to: "+91" + JSON.stringify(studentData[index]["Phone Number"]),
           }).then((message) => console.log(message.sid));
         }
+
+        let meeting = new Meeting({
+          Date:startTime
+        });
+        meeting._id = mongoose.Types.ObjectId();
+        meeting.meetId = response.id;
+        meeting.pass = response.password;
+        meeting.email = response.host_email;
+        meeting.pollData = [
+          answer = pollData.answer,
+          opt1 = pollData.opt1,
+          opt2 = pollData.opt2,
+          opt3 = pollData.opt3,
+          opt4 = pollData.opt4,
+          question = pollData.question
+        ]
     })
     .catch(function (err) {
       // API call failed...
