@@ -28,10 +28,10 @@ router.post("/newmeeting", async (req, res) => {
   console.log(studentData)
   console.log(pollData)
 
-  var startTime = JSON.stringify(date) + "T" + JSON.stringify(time) + "Z";
-
+  var startTime = date+'T'+time+':00'
+  console.log(startTime)
   let message = new Messages({
-    startTime
+    time:startTime
   });
 
   message._id = mongoose.Types.ObjectId();
