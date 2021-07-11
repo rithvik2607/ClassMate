@@ -13,7 +13,7 @@ function Dashboard(props) {
         <Button
           variant="contained"
           color="primary"
-          onClick={history.push("/teacher-form")}
+          onClick={() => history.push("/teacher-form")}
         >
           Schedule
         </Button>
