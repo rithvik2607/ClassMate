@@ -1,20 +1,16 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
 import { Button } from "@material-ui/core";
-import {useHistory} from 'react-router-dom'
+import { useHistory, Link } from "react-router-dom";
 
-function Dashboard() {
+function Dashboard(props) {
   const history = useHistory();
-
-  function handleSubmit() {
-    history.push("/teacher-form");
-  }
 
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
         <h1>Schedule a Meet</h1>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button variant="contained" color="primary">
           Schedule
         </Button>
       </div>
