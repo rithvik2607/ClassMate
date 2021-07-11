@@ -24,7 +24,6 @@ router.post("/newmeeting", async (req, res) => {
   const { time, date, studentData, pollData } = req.body;
 
   var startTime = date+'T'+time+':00'
-  console.log(startTime)
   let message = new Messages({
     time:startTime
   });
