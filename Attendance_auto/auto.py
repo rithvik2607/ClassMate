@@ -8,7 +8,7 @@ import base64
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from dotenv import dotenv_values
 
@@ -27,8 +27,9 @@ while 1:
     mycol = mydb["attendance"]
 
     for i in mycol.find():
-        timestamp = time.time() + datetime.timedelta(hours = -1)
-        dt_object = datetime.fromtimestamp(timestamp)
+        a = datetime.now() + timedelta(hours = -1 )
+        a = int(a.strftime('%Y%m%d'))
+        dt_object = datetime.fromtimestamp(a)
         if i["time"] < dt_object:
 
             data = ""
