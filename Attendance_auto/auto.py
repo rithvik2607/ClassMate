@@ -34,8 +34,6 @@ while 1:
             data = ""
             for y in i["students"]:
                 data = data + "\n" + y
-
-            #print(data)
             
             message = Mail(
                 from_email='muditsinghal2002@gmail.com',
@@ -46,7 +44,6 @@ while 1:
 
             data_bytes = data.encode('ascii')
             encoded_file = base64.b64encode(data_bytes).decode('ascii')
-            #print(encoded_file)
             attachedFile = Attachment(
                 FileContent(encoded_file),
                 FileName('attachment.txt'),
