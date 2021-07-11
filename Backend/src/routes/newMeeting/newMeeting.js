@@ -88,6 +88,8 @@ router.post("/newmeeting", async (req, res) => {
           opt4 = pollData.opt4,
           question = pollData.question
         ]
+
+        await meeting.save();
     })
     .catch(function (err) {
       // API call failed...
