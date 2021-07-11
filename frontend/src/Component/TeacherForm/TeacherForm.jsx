@@ -18,6 +18,7 @@ class TeacherForm extends Component {
       date: "",
       pollData: [],
       studentData: "",
+      email: "",
     };
     this.pollDataFunction = this.pollDataFunction.bind(this);
   }
@@ -60,7 +61,7 @@ class TeacherForm extends Component {
         date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
-        email: this.props.email,
+        teachersEmail: this.state.email,
       };
       console.log(formData);
       axios
@@ -131,6 +132,14 @@ class TeacherForm extends Component {
                 className={styles.Teacher}
               />
             </div>
+            <TextField
+              id="outlined-basic"
+              label="Host Email"
+              variant="outlined"
+              type="email"
+              onChange={(e) => this.setState({ email: e.target.value })}
+              className={styles.Teacher}
+            />
             <TextField
               id="outlined-basic"
               label="Number of Polls"
