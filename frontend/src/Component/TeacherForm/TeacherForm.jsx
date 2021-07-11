@@ -102,7 +102,7 @@ class TeacherForm extends Component {
   render() {
     return (
       <div className={styles.bg_img}>
-        <form onSubmit={(e) => this.readFile(e)} className={styles.container}>
+        <form onSubmit={this.readFile} className={styles.container}>
           <div className={styles.innerContainer}>
             <h1>Schedule Meet</h1>
             <label className={styles.Label}>
