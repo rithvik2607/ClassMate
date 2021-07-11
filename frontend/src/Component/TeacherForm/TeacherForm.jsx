@@ -60,6 +60,7 @@ class TeacherForm extends Component {
         date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
+        email: this.props.email,
       };
       console.log(formData);
       axios
@@ -102,7 +103,7 @@ class TeacherForm extends Component {
   render() {
     return (
       <div className={styles.bg_img}>
-        <form onSubmit={this.readFile} className={styles.container}>
+        <div className={styles.container}>
           <div className={styles.innerContainer}>
             <h1>Schedule Meet</h1>
             <label className={styles.Label}>
@@ -154,12 +155,14 @@ class TeacherForm extends Component {
               variant="contained"
               color="primary"
               className={styles.Teacher}
-              type="submit"
+              onClick={() => {
+                this.readFile();
+              }}
             >
               SUBMIT
             </Button>
           </div>
-        </form>
+        </div>
       </div>
     );
   }

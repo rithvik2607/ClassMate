@@ -15,7 +15,7 @@ function Dashboard() {
       <div className={styles.innerContainer}>
         <h1>Schedule a Meet</h1>
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
+          Schedule
         </Button>
       </div>
     </div>
