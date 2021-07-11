@@ -66,12 +66,13 @@ class TeacherForm extends Component {
         .post(`${apiBaseURL}meet/newmeeting`, formData)
         .then((res) => {
           console.log(res);
+          this.props.history.push("/dashboard");
         })
         .catch((err) => console.log(err));
     };
     reader.readAsBinaryString(f);
   }
-  
+
   convertToJson(csv) {
     var lines = csv.split("\n");
 
