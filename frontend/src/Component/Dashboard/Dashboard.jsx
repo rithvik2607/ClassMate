@@ -10,7 +10,11 @@ function Dashboard(props) {
     <div className={styles.container}>
       <div className={styles.innerContainer}>
         <h1>Schedule a Meet</h1>
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={history.push("/teacher-form")}
+        >
           Schedule
         </Button>
       </div>
