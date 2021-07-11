@@ -17,10 +17,10 @@ while 1:
 
     mydb = myclient.myFirstDatabase
 
-    mycol = mydb["messages"]
+    mycol = mydb["message"]
 
     for i in mycol.find():
-        timestamp = time.time()
+        timestamp = time.time() + datetime.delta(hours = 0.25 )
         dt_object = datetime.fromtimestamp(timestamp)
         if i["time"] < dt_object:
             
