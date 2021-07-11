@@ -13,6 +13,10 @@ const Meeting = new mongoose.Schema({
         type: String,
         required: true,
     },
+    pass: {
+        type: String,
+        required: true
+    },
     pollData: [{
         answer: {
             type: String,
