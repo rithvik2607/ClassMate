@@ -3,7 +3,7 @@ import time
 import urllib
 
 from twilio.rest import Client
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from dotenv import dotenv_values
 
@@ -20,9 +20,9 @@ while 1:
     mycol = mydb["message"]
 
     for i in mycol.find():
-        timestamp = time.time() + datetime.delta(hours = 0.25 )
-        dt_object = datetime.fromtimestamp(timestamp)
-        if i["time"] < dt_object:
+        a = datetime.now() + timedelta(hours = -5.25 )
+        print(i["time"], a)
+        if i["time"] < a:
             
             for y in i["contacts"]:
                 print(y)

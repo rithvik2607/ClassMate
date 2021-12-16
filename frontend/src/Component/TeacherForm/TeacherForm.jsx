@@ -18,6 +18,7 @@ class TeacherForm extends Component {
       date: "",
       pollData: [],
       studentData: "",
+      email: "",
     };
     this.pollDataFunction = this.pollDataFunction.bind(this);
   }
@@ -60,6 +61,7 @@ class TeacherForm extends Component {
         date: this.state.date,
         studentData: this.state.studentData,
         pollData: this.state.pollData,
+        teachersEmail: this.state.email,
       };
       console.log(formData);
       axios
@@ -102,7 +104,7 @@ class TeacherForm extends Component {
   render() {
     return (
       <div className={styles.bg_img}>
-        <form onSubmit={(e) => this.readFile(e)} className={styles.container}>
+        <div className={styles.container}>
           <div className={styles.innerContainer}>
             <h1>Schedule Meet</h1>
             <label className={styles.Label}>
@@ -132,6 +134,14 @@ class TeacherForm extends Component {
             </div>
             <TextField
               id="outlined-basic"
+              label="Host Email"
+              variant="outlined"
+              type="email"
+              onChange={(e) => this.setState({ email: e.target.value })}
+              className={styles.Teacher}
+            />
+            <TextField
+              id="outlined-basic"
               label="Number of Polls"
               variant="outlined"
               type="number"
@@ -154,12 +164,14 @@ class TeacherForm extends Component {
               variant="contained"
               color="primary"
               className={styles.Teacher}
-              type="submit"
+              onClick={(e) => {
+                this.readFile(e);
+              }}
             >
               SUBMIT
             </Button>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
